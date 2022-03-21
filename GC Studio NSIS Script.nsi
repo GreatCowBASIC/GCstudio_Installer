@@ -1,15 +1,21 @@
 ############################################################################################
-#                       NSIS Installation Script For GC Studio  V.1.02
+#                       NSIS Installation Script For GC Studio  V.1.01
 #                                   By Angel Mier                              
 ############################################################################################
+
+######################################################################
+# Includes
+
+!include "MUI.nsh"
+!include "LogicLib.nsh"
 
 ######################################################################
 # Installer Configuration
 
 !define APP_NAME "GC Studio"
 !define COMP_NAME "Mier Engineering"
-!define WEB_SITE "http://www.gcbasic.com"
-!define VERSION "00.07.00.00"
+!define WEB_SITE "https://www.gcbasic.com"
+!define VERSION "1.02.00.00"
 !define COPYRIGHT "Copyright © 2007 - 2022"
 !define DESCRIPTION "Application"
 !define LICENSE_TXT ".\GCstudio\Build\net6.0-windows\license.txt"
@@ -45,8 +51,6 @@ InstallDir "C:\GCstudio"
 
 ######################################################################
 # Modern UI configuration
-
-!include "MUI.nsh"
 
 !define MUI_ICON ".\Res\Installericon.ico"
 !define MUI_UNICON ".\Res\Uninsntallico.ico"
@@ -119,6 +123,9 @@ File /r ".\FileIcons\*"
 #GCB Master Build
 SetOutPath "$INSTDIR"
 File /r ".\GCB@Syn\*"
+#Extras
+SetOutPath "$INSTDIR"
+File /r ".\Extras\*"
 #USE.ine
 IfFileExists $INSTDIR\GreatCowBasic\use.ini +3 0
 SetOutPath "$INSTDIR\GreatCowBasic"
@@ -131,6 +138,15 @@ SectionEnd
 Section -Icons_Reg
 SetOutPath "$INSTDIR"
 WriteUninstaller "$INSTDIR\uninstall.exe"
+
+#Add Path
+; Check if the path entry already exists and write result to $0
+nsExec::Exec 'echo %PATH% | find "$INSTDIR\vscode\bin"'
+Pop $0   ; gets result code
+
+${If} $0 = 0
+    nsExec::Exec 'setx PATH %PATH%;$INSTDIR\vscode\bin'
+${EndIf}
 
 #Start menu and desktop shortcuts
 !ifdef REG_START_MENU
@@ -168,36 +184,61 @@ WriteRegStr ${REG_ROOT} "Environment"  "GCBASIC_INSTALL_PATH" "$INSTDIR\"
 
 #File Associations
 WriteRegStr ${REG_CLASSES} ".gcb" "" "GCB File"
-WriteRegStr ${REG_CLASSES} "GCB File\shell\open\command" ""  "$INSTDIR\GCstudio.exe %1"
+WriteRegStr ${REG_CLASSES} "GCB File\shell\open\command" ""  "$INSTDIR\GCstudio.exe $\"%1$\""
 WriteRegStr ${REG_CLASSES} "GCB File\Defaulticon" "" "$INSTDIR\GCstudio.exe,0"
 
 WriteRegStr ${REG_CLASSES} ".asm" "" "ASM File"
-WriteRegStr ${REG_CLASSES} "ASM File\shell\open\command" ""  "$INSTDIR\GCstudio.exe %1"
+WriteRegStr ${REG_CLASSES} "ASM File\shell\open\command" ""  "$INSTDIR\GCstudio.exe $\"%1$\""
 WriteRegStr ${REG_CLASSES} "ASM File\Defaulticon" "" "$INSTDIR\FileIcons\asm.ico,0"
 
 WriteRegStr ${REG_CLASSES} ".s" "" "S File"
-WriteRegStr ${REG_CLASSES} "S File\shell\open\command" ""  "$INSTDIR\GCstudio.exe %1"
+WriteRegStr ${REG_CLASSES} "S File\shell\open\command" ""  "$INSTDIR\GCstudio.exe $\"%1$\""
 WriteRegStr ${REG_CLASSES} "S File\Defaulticon" "" "$INSTDIR\FileIcons\asm.ico,0"
 
 WriteRegStr ${REG_CLASSES} ".bas" "" "FBasic File"
-WriteRegStr ${REG_CLASSES} "FBasic File\shell\open\command" ""  "$INSTDIR\GCstudio.exe %1"
+WriteRegStr ${REG_CLASSES} "FBasic File\shell\open\command" ""  "$INSTDIR\GCstudio.exe $\"%1$\""
 WriteRegStr ${REG_CLASSES} "FBasic File\Defaulticon" "" "$INSTDIR\FileIcons\bas.ico,0"
 
 WriteRegStr ${REG_CLASSES} ".bi" "" "Fbasic Library"
-WriteRegStr ${REG_CLASSES} "Fbasic Library\shell\open\command" ""  "$INSTDIR\GCstudio.exe %1"
+WriteRegStr ${REG_CLASSES} "Fbasic Library\shell\open\command" ""  "$INSTDIR\GCstudio.exe $\"%1$\""
 WriteRegStr ${REG_CLASSES} "Fbasic Library\Defaulticon" "" "$INSTDIR\FileIcons\h.ico,0"
 
 WriteRegStr ${REG_CLASSES} ".h" "" "GCB Library"
-WriteRegStr ${REG_CLASSES} "GCB Library\shell\open\command" ""  "$INSTDIR\GCstudio.exe %1"
+WriteRegStr ${REG_CLASSES} "GCB Library\shell\open\command" ""  "$INSTDIR\GCstudio.exe $\"%1$\""
 WriteRegStr ${REG_CLASSES} "GCB Library\Defaulticon" "" "$INSTDIR\FileIcons\h.ico,0"
 
 WriteRegStr ${REG_CLASSES} ".json" "" "Json File"
-WriteRegStr ${REG_CLASSES} "Json File\shell\open\command" ""  "$INSTDIR\GCstudio.exe %1"
+WriteRegStr ${REG_CLASSES} "Json File\shell\open\command" ""  "$INSTDIR\GCstudio.exe $\"%1$\""
 WriteRegStr ${REG_CLASSES} "Json File\Defaulticon" "" "$INSTDIR\FileIcons\json.ico,0"
 
 WriteRegStr ${REG_CLASSES} ".code-workspace" "" "GCB Project"
-WriteRegStr ${REG_CLASSES} "GCB Project\shell\open\command" ""  "$INSTDIR\GCstudio.exe %1"
+WriteRegStr ${REG_CLASSES} "GCB Project\shell\open\command" ""  "$INSTDIR\GCstudio.exe $\"%1$\""
 WriteRegStr ${REG_CLASSES} "GCB Project\Defaulticon" "" "$INSTDIR\FileIcons\project.ico,0"
+
+
+#Windows Context Menu
+#shell
+WriteRegStr ${REG_CLASSES} "Directory\shell\GCstudio" "" "Open with GC Studio"
+WriteRegStr ${REG_CLASSES} "Directory\shell\GCstudio\command" ""  "$INSTDIR\GCstudio.exe $\"%V$\""
+WriteRegStr ${REG_CLASSES} "Directory\shell\GCstudio" "Icon" "$INSTDIR\GCstudio.exe,0"
+
+WriteRegStr ${REG_CLASSES} "Directory\Background\shell\GCstudio" "" "Open with GC Studio"
+WriteRegStr ${REG_CLASSES} "Directory\Background\shell\GCstudio\command" ""  "$INSTDIR\GCstudio.exe $\"%V$\""
+WriteRegStr ${REG_CLASSES} "Directory\Background\shell\GCstudio" "Icon" "$INSTDIR\GCstudio.exe,0"
+
+WriteRegStr ${REG_ROOT} "Software\Classes\Directory\Background\shell\GCstudio" "" "Open with GC Studio"
+WriteRegStr ${REG_ROOT} "Software\Classes\Directory\Background\shell\GCstudio\command" ""  "$INSTDIR\GCstudio.exe $\"%V$\""
+WriteRegStr ${REG_ROOT} "Software\Classes\Directory\Background\shell\GCstudio" "Icon" "$INSTDIR\GCstudio.exe,0"
+
+#drive
+WriteRegStr ${REG_CLASSES} "Drive\shell\GCstudio" "" "Open with GC Studio"
+WriteRegStr ${REG_CLASSES} "Drive\shell\GCstudio\command" ""  "$INSTDIR\GCstudio.exe $\"%V$\""
+WriteRegStr ${REG_CLASSES} "Drive\shell\GCstudio" "Icon" "$INSTDIR\GCstudio.exe,0"
+
+#files
+WriteRegStr ${REG_CLASSES} "*\shell\GCstudio" "" "Open with GC Studio"
+WriteRegStr ${REG_CLASSES} "*\shell\GCstudio\command" ""  "$INSTDIR\GCstudio.exe $\"%1$\""
+WriteRegStr ${REG_CLASSES} "*\shell\GCstudio" "Icon" "$INSTDIR\GCstudio.exe,0"
 
 
 !ifdef WEB_SITE
