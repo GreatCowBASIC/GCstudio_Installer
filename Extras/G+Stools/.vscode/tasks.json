@@ -1,0 +1,45 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build win x86",
+            "type": "shell",
+            "command": "${env:GCBASIC_INSTALL_PATH}\\FBASIC\\x86\\fbc.exe ${file} -arch 586 -exx -x ${fileDirname}\\${fileBasenameNoExtension}.exe",
+          
+                    "options": {
+                        //"cwd": "C:\\GCB@Syn\\GreatCowBasic\\",
+                        
+                    },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+            
+
+        },
+
+        {
+            "label": "Build win x64",
+            "type": "shell",
+            "command": "${env:GCBASIC_INSTALL_PATH}\\FBASIC\\x86\\fbc.exe ${file} -ex -x ${fileDirname}\\${fileBasenameNoExtension}.exe",
+              
+                    "options": {
+                        //"cwd": "C:\\GCB@Syn\\GreatCowBasic\\",
+                        
+                    },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+            
+
+        },
+
+ 
+        
+    ]
+}

@@ -1,0 +1,3 @@
+GCB@Syn
+GCstudio
+GCcode

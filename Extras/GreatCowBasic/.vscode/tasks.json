@@ -1,0 +1,36 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build GCB Compiler",
+            "type": "shell",
+            "command": "C:\\GCB@Syn\\FBASIC\\x86\\fbc.exe gcbasic.bas -arch 586 -exx -x gcbasic.exe",
+               // "args": ["gcbasic.bas","-arch 586","-exx","-x","gcbasic.exe"],
+                    "options": {
+                        "cwd": "C:\\GCB@Syn\\GreatCowBasic\\",
+                        
+
+                        // "label": "Build GCB Compiler",
+                        // "type": "process",
+                        // "command": "C:\\GCB@Syn\\FBASIC\\x86\\fbc.exe",
+                        //     "args": ["gcbasic.bas","-arch 586","-exx","-x","gcbasic.exe"],
+                        //         "options": {
+                        //             "cwd": "C:\\GCB@Syn\\GreatCowBasic\\",
+                    },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+            
+
+        },
+
+        
+
+ 
+        
+    ]
+}

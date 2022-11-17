@@ -1,5 +1,5 @@
 ############################################################################################
-#                       NSIS Installation Script For GC Studio  V.1.01
+#                       NSIS Installation Script For GC Studio  V.1.03
 #                                   By Angel Mier                              
 ############################################################################################
 
@@ -15,7 +15,7 @@
 !define APP_NAME "GC Studio"
 !define COMP_NAME "Mier Engineering"
 !define WEB_SITE "https://www.gcbasic.com"
-!define VERSION "1.02.00.00"
+!define VERSION "1.03.00.00"
 !define COPYRIGHT "Copyright © 2007 - 2022"
 !define DESCRIPTION "Application"
 !define LICENSE_TXT ".\GCstudio\Build\net6.0-windows\license.txt"
@@ -111,12 +111,15 @@ SetOverwrite ifnewer
 
 #Prereq
 SetOutPath "$INSTDIR"
-File /r ".\Redist\Net6x86.exe"
-ExecWait "$INSTDIR\Net6x86.exe /install /quiet /norestart /log Log\Net6.log"
-Delete "$INSTDIR\Net6x86.exe"
+File /r ".\Redist\Net7x86.exe"
+ExecWait "$INSTDIR\Net7x86.exe /install /quiet /norestart /log Log\Net7.log"
+Delete "$INSTDIR\Net7x86.exe"
 #GCstudio
 SetOutPath "$INSTDIR"
 File /r ".\GCstudio\Build\net6.0-windows\*"
+#GCcode
+SetOutPath "$INSTDIR\vscode"
+File /r ".\GCcode\Build\vscode\*"
 #File Icons
 SetOutPath "$INSTDIR\FileIcons"
 File /r ".\FileIcons\*"
