@@ -129,6 +129,30 @@ File /r ".\GCstudio\Build\net6.0-windows\*"
 SetOutPath "$INSTDIR\vscode"
 File /r ".\GCcode\Build\vscode\*"
 
+#GCB Extension
+SetOutPath "$INSTDIR\vscode\data\extensions\MierEngineering.GreatCowBasic-1.0.0"
+File /r ".\GCcode\SRC\MierEngineering.GreatCowBasic-1.0.0\*"
+
+#ResetToFactory exe
+SetOutPath "$INSTDIR"
+File /r ".\GCcode\SRC\Reset To Factory\ResetToFactory.exe"
+
+#ResetToFactory exe
+SetOutPath "$INSTDIR"
+File /r ".\GCcode\SRC\Reset To Factory\ResetToFactory.exe"
+
+#Fassoc exe
+SetOutPath "$INSTDIR"
+File /r ".\GCstudio\SRC\fassoc\fassoc.exe"
+
+#Templates
+SetOutPath "$INSTDIR"
+File /r ".\GCstudio\SRC\Templates\*"
+
+#Default Config
+SetOutPath "$INSTDIR"
+File /r ".\GCstudio\SRC\DefaultConfig\*"
+
 #File Icons
 SetOutPath "$INSTDIR\FileIcons"
 File /r ".\FileIcons\*"
