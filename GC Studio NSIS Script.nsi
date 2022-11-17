@@ -109,30 +109,43 @@ Section -MainProgram
 ${INSTALL_TYPE}
 SetOverwrite ifnewer
 
-#Prereq
+#Prereq Net6
+SetOutPath "$INSTDIR"
+File /r ".\Redist\Net6x86.exe"
+ExecWait "$INSTDIR\Net6x86.exe /install /quiet /norestart /log Log\Net6.log"
+Delete "$INSTDIR\Net6x86.exe"
+
+#Prereq Net7
 SetOutPath "$INSTDIR"
 File /r ".\Redist\Net7x86.exe"
 ExecWait "$INSTDIR\Net7x86.exe /install /quiet /norestart /log Log\Net7.log"
 Delete "$INSTDIR\Net7x86.exe"
+
 #GCstudio
 SetOutPath "$INSTDIR"
 File /r ".\GCstudio\Build\net6.0-windows\*"
+
 #GCcode
 SetOutPath "$INSTDIR\vscode"
 File /r ".\GCcode\Build\vscode\*"
+
 #File Icons
 SetOutPath "$INSTDIR\FileIcons"
 File /r ".\FileIcons\*"
+
 #GCB Master Build
 SetOutPath "$INSTDIR"
 File /r ".\GCB@Syn\*"
+
 #Extras
 SetOutPath "$INSTDIR"
 File /r ".\Extras\*"
+
 #USE.ine
 IfFileExists $INSTDIR\GreatCowBasic\use.ini +3 0
 SetOutPath "$INSTDIR\GreatCowBasic"
 File /r ".\GCB@Syn\use_in_master\*"
+
 SectionEnd
 
 ######################################################################
