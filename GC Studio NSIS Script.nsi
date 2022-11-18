@@ -18,7 +18,7 @@
 !define VERSION "1.03.00.00"
 !define COPYRIGHT "Copyright © 2007 - 2022"
 !define DESCRIPTION "Application"
-!define LICENSE_TXT ".\GCstudio\Build\net6.0-windows\license.txt"
+!define LICENSE_TXT ".\GCB@Syn\GreatCowBASIC\documentation\license.txt"
 !define INSTALLER_NAME ".\GCstudioSetup.exe"
 !define MAIN_APP_EXE "GCstudio.exe"
 !define INSTALL_TYPE "SetShellVarContext current"
@@ -124,6 +124,7 @@ Delete "$INSTDIR\Net7x86.exe"
 #GCstudio
 SetOutPath "$INSTDIR"
 File /r ".\GCstudio\Build\net6.0-windows\*"
+File /r ".\GCstudio\Build\net7.0-windows\*"
 
 #GCcode
 SetOutPath "$INSTDIR\vscode"
@@ -132,10 +133,6 @@ File /r ".\GCcode\Build\vscode\*"
 #GCB Extension
 SetOutPath "$INSTDIR\vscode\data\extensions\MierEngineering.GreatCowBasic-1.0.0"
 File /r ".\GCcode\SRC\MierEngineering.GreatCowBasic-1.0.0\*"
-
-#ResetToFactory exe
-SetOutPath "$INSTDIR"
-File /r ".\GCcode\SRC\Reset To Factory\ResetToFactory.exe"
 
 #ResetToFactory exe
 SetOutPath "$INSTDIR"
