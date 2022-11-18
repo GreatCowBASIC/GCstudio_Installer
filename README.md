@@ -1,21 +1,19 @@
 <div id="GCstudio-logo" align="center">
     <br />
     <img src="https://github.com/GreatCowBASIC/Corporate_Identity/blob/master/SRC/Logo/LogoSVG.svg" alt="GC Studio Logo" width="210"/>
-    <h1>GC Studio Installer and Updates Manufacturing Environment</h1>
+    <h1>GC Studio Installer and Update Manufacturing Environment</h1>
     <h3>Modern User Interface and IDE for a GREAT compiler!</h3>
 </div>
 
-GC Studio it’s a contribution to [Great Cow Basic](https://www.gcbasic.com), that brings the option to select between multiple IDE’s, integrates an automatic update system, tailors a very powerful IDE called GC Code with specific customizations, and incorporates an integrated dev environment for the project itself, while gives a modern look to the user interface.
-
-This project is brought to you by: Evan R. Venn and Angel Mier.
+This is the common environment to build the GC Studio Installer and the updates, from the project repositories.
 
 ## Common Locations:
 
 | Description | Directory |
 | --- | --- |
-| GCstudio Source/Project | "SRC/" |
-| GCstudio Current Build | "Build/net6.0-windows/" |
-| Batch files Clean | "@Root" |
+| GCB Gold repo | "GCB@syn/" |
+| GCstudio repo| "GCstudio/" |
+| GCcode repo | "GCcode/" |
 
 
 ### Prerequisites:
