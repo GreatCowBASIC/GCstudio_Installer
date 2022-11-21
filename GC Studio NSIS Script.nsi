@@ -1,5 +1,5 @@
 ############################################################################################
-#                       NSIS Installation Script For GC Studio  V.1.03
+#                       NSIS Installation Script For GC Studio  V.1.03.01
 #                                   By Angel Mier                              
 ############################################################################################
 
@@ -133,6 +133,14 @@ File /r ".\GCcode\Build\vscode\*"
 #GCB Extension
 SetOutPath "$INSTDIR\vscode\data\extensions\MierEngineering.GreatCowBasic-1.0.0"
 File /r ".\GCcode\SRC\MierEngineering.GreatCowBasic-1.0.0\*"
+
+#Extra Extensions
+SetOutPath "$INSTDIR\vscode\data\extensions"
+File /r ".\GCcode\SRC\extensions\*"
+
+#GCcode defaults
+SetOutPath "$INSTDIR\vscode\data\user-data"
+File /r ".\GCcode\SRC\user-data\*"
 
 #ResetToFactory exe
 SetOutPath "$INSTDIR"
