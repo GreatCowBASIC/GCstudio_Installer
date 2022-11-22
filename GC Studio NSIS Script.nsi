@@ -109,12 +109,6 @@ Section -MainProgram
 ${INSTALL_TYPE}
 SetOverwrite ifnewer
 
-#Prereq Net6
-SetOutPath "$INSTDIR"
-File /r ".\Redist\Net6x86.exe"
-ExecWait "$INSTDIR\Net6x86.exe /install /quiet /norestart /log Log\Net6.log"
-Delete "$INSTDIR\Net6x86.exe"
-
 #Prereq Net7
 SetOutPath "$INSTDIR"
 File /r ".\Redist\Net7x86.exe"
@@ -123,7 +117,6 @@ Delete "$INSTDIR\Net7x86.exe"
 
 #GCstudio
 SetOutPath "$INSTDIR"
-File /r ".\GCstudio\Build\net6.0-windows\*"
 File /r ".\GCstudio\Build\net7.0-windows\*"
 
 #GCcode
