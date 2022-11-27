@@ -2,7 +2,6 @@
     <br />
     <img src="https://github.com/GreatCowBASIC/Corporate_Identity/blob/master/SRC/Logo/LogoSVG.svg" alt="GC Studio Logo" width="210"/>
     <h1>GC Studio Installer and Update Manufacturing Environment</h1>
-    <h3>Modern User Interface and IDE for a GREAT compiler!</h3>
 </div>
 
 This is the common environment to build the GC Studio Installer and the updates, from the project repositories.
