@@ -40,7 +40,9 @@ VIAddVersionKey "FileVersion"  "${VERSION}"
 ######################################################################
 # Compression and installer settings
 
-SetCompressor LZMA
+SetCompressor /solid LZMA
+SetCompressorDictSize 64
+SetDatablockOptimize ON
 Name "${APP_NAME}"
 Caption "${APP_NAME} Install Program"
 OutFile "${INSTALLER_NAME}"
@@ -109,11 +111,18 @@ Section -MainProgram
 ${INSTALL_TYPE}
 SetOverwrite ifnewer
 
+#HKCU Environment key
+WriteRegStr ${REG_ROOT} "Environment"  "GCBASIC_INSTALL_PATH" "$INSTDIR\"
+
 #Prereq Net7
+SetDetailsPrint both
+DetailPrint "Installing prerequisites, this may take a while, please wait..."
+SetDetailsPrint listonly
 SetOutPath "$INSTDIR"
 File /r ".\Redist\Net7x86.exe"
 ExecWait "$INSTDIR\Net7x86.exe /install /quiet /norestart /log Log\Net7.log"
 Delete "$INSTDIR\Net7x86.exe"
+SetDetailsPrint both
 
 #GCstudio
 SetOutPath "$INSTDIR"
@@ -123,9 +132,9 @@ File /r ".\GCstudio\Build\net7.0-windows\*"
 SetOutPath "$INSTDIR\vscode"
 File /r ".\GCcode\Build\vscode\*"
 
-#GCB Extension
+#GCB Extension (whitout node_modules)
 SetOutPath "$INSTDIR\vscode\data\extensions\MierEngineering.GreatCowBasic-1.0.0"
-File /r ".\GCcode\SRC\MierEngineering.GreatCowBasic-1.0.0\*"
+File /r /x node_modules ".\GCcode\SRC\MierEngineering.GreatCowBasic-1.0.0\*"
 
 #Extra Extensions
 SetOutPath "$INSTDIR\vscode\data\extensions"
@@ -146,10 +155,6 @@ File /r ".\GCstudio\SRC\fassoc\fassoc.exe"
 #Templates
 SetOutPath "$INSTDIR"
 File /r ".\GCstudio\SRC\Templates\*"
-
-#Default Config
-SetOutPath "$INSTDIR"
-File /r ".\GCstudio\SRC\DefaultConfig\*"
 
 #File Icons
 SetOutPath "$INSTDIR\FileIcons"
@@ -216,9 +221,6 @@ WriteRegStr ${REG_ROOT} "${UNINSTALL_PATH}"  "UninstallString" "$INSTDIR\uninsta
 WriteRegStr ${REG_ROOT} "${UNINSTALL_PATH}"  "DisplayIcon" "$INSTDIR\${MAIN_APP_EXE}"
 WriteRegStr ${REG_ROOT} "${UNINSTALL_PATH}"  "DisplayVersion" "${VERSION}"
 WriteRegStr ${REG_ROOT} "${UNINSTALL_PATH}"  "Publisher" "${COMP_NAME}"
-
-#HKCU Environment key
-WriteRegStr ${REG_ROOT} "Environment"  "GCBASIC_INSTALL_PATH" "$INSTDIR\"
 
 #File Associations
 WriteRegStr ${REG_CLASSES} ".gcb" "" "GCB File"
