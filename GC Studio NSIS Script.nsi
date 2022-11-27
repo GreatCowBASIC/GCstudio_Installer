@@ -18,7 +18,7 @@
 !define VERSION "1.03.00.00"
 !define COPYRIGHT "Copyright © 2007 - 2022"
 !define DESCRIPTION "Application"
-!define LICENSE_TXT ".\GCB@Syn\GreatCowBASIC\documentation\license.txt"
+!define LICENSE_TXT ".\GCB_Gold\Build\GreatCowBASIC\documentation\license.txt"
 !define INSTALLER_NAME ".\GCstudioSetup.exe"
 !define MAIN_APP_EXE "GCstudio.exe"
 !define INSTALL_TYPE "SetShellVarContext current"
@@ -132,7 +132,7 @@ File /r ".\GCstudio\Build\net7.0-windows\*"
 SetOutPath "$INSTDIR\vscode"
 File /r ".\GCcode\Build\vscode\*"
 
-#GCB Extension (whitout node_modules)
+#GCB Extension (without node_modules)
 SetOutPath "$INSTDIR\vscode\data\extensions\MierEngineering.GreatCowBasic-1.0.0"
 File /r /x node_modules ".\GCcode\SRC\MierEngineering.GreatCowBasic-1.0.0\*"
 
@@ -160,18 +160,14 @@ File /r ".\GCstudio\SRC\Templates\*"
 SetOutPath "$INSTDIR\FileIcons"
 File /r ".\FileIcons\*"
 
-#GCB Master Build
+#GCB Gold Build
 SetOutPath "$INSTDIR"
-File /r ".\GCB@Syn\*"
-
-#Extras
-SetOutPath "$INSTDIR"
-File /r ".\Extras\*"
+File /r ".\GCB_Gold\Build\*"
 
 #USE.ine
 IfFileExists $INSTDIR\GreatCowBasic\use.ini +3 0
 SetOutPath "$INSTDIR\GreatCowBasic"
-File /r ".\GCB@Syn\use_in_master\*"
+File /r ".\GCB_Gold\Build\use_in_master\*"
 
 SectionEnd
 
@@ -255,6 +251,17 @@ WriteRegStr ${REG_CLASSES} ".code-workspace" "" "GCB Project"
 WriteRegStr ${REG_CLASSES} "GCB Project\shell\open\command" ""  "$INSTDIR\GCstudio.exe $\"%1$\""
 WriteRegStr ${REG_CLASSES} "GCB Project\Defaulticon" "" "$INSTDIR\FileIcons\project.ico,0"
 
+WriteRegStr ${REG_CLASSES} ".nsi" "" "NSIS Script"
+WriteRegStr ${REG_CLASSES} "NSIS Script\shell\open\command" ""  "$INSTDIR\GCstudio.exe $\"%1$\""
+WriteRegStr ${REG_CLASSES} "NSIS Script\Defaulticon" "" "$INSTDIR\FileIcons\nsis.ico,0"
+
+WriteRegStr ${REG_CLASSES} ".ps1" "" "PWSH Script"
+WriteRegStr ${REG_CLASSES} "PWSH Script\shell\open\command" ""  "$INSTDIR\GCstudio.exe $\"%1$\""
+WriteRegStr ${REG_CLASSES} "PWSH Script\Defaulticon" "" "$INSTDIR\FileIcons\pwsh.ico,0"
+
+WriteRegStr ${REG_CLASSES} ".psm1" "" "PWSH Script Module"
+WriteRegStr ${REG_CLASSES} "PWSH Script Module\shell\open\command" ""  "$INSTDIR\GCstudio.exe $\"%1$\""
+WriteRegStr ${REG_CLASSES} "PWSH Script Module\Defaulticon" "" "$INSTDIR\FileIcons\pwsh.ico,0"
 
 #Windows Context Menu
 #shell

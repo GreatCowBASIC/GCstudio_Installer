@@ -1,0 +1,1 @@
+.\nsis\makensis /V4 "GCBdemonstrationsPack Script.nsi"

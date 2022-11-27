@@ -11,7 +11,7 @@ This is the common environment to build the GC Studio Installer and the updates,
 
 | Description | Directory |
 | --- | --- |
-| GCB Gold repo | "GCB@syn/" |
+| GCB Gold repo | "GCB_Gold/" |
 | GCstudio repo| "GCstudio/" |
 | GCcode repo | "GCcode/" |
 
@@ -22,10 +22,10 @@ This is the common environment to build the GC Studio Installer and the updates,
 
 
 # License
-GCstudio Installer Enviroment is released under [MIT License](https://github.com/GreatCowBASIC/GCstudio/blob/master/LICENSE)
+GCstudio Installer Enviroment is released under [MIT License](https://github.com/GreatCowBASIC/GCstudio_Installer/blob/master/LICENSE)
 
 ----
 # Conduct
 
-Great Cow Basic and GC Studio projects adopt the [GCB Open Source Code of Conduct](https://github.com/GreatCowBASIC/GCstudio/blob/master/CODE_OF_CONDUCT.md).
+Great Cow Basic and GC Studio projects adopt the [GCB Open Source Code of Conduct](https://github.com/GreatCowBASIC/GCstudio_Installer/blob/master/CODE_OF_CONDUCT.md).
 
