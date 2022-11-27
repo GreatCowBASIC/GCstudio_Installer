@@ -14,6 +14,7 @@ This is the common environment to build the GC Studio Installer and the updates,
 | GCB Gold repo | "GCB_Gold/" |
 | GCstudio repo| "GCstudio/" |
 | GCcode repo | "GCcode/" |
+| Demonstrations repo | "Demonstration_Sources/" |
 
 
 ### Prerequisites:
