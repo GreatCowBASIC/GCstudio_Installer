@@ -6,7 +6,7 @@
 ######################################################################
 # Includes
 
-!include "MUI.nsh"
+!include "MUI2.nsh"
 !include "LogicLib.nsh"
 
 ######################################################################
@@ -66,11 +66,17 @@ InstallDir "C:\GCstudio"
 !define MUI_HEADERIMAGE_BITMAP ".\Res\top.bmp"
 
 #Option Run PICKitPlus clone tool 
-!define MUI_FINISHPAGE_RUN_TEXT "Open PICKitPlus Clone Tool"
+!define MUI_FINISHPAGE_RUN_TEXT "Clone your existing PICKit+ installation to GC Studio"
 !define MUI_FINISHPAGE_RUN_NOTCHECKED
 !define MUI_FINISHPAGE_RUN "$INSTDIR\${MAIN_APP_EXE}"
 !define MUI_FINISHPAGE_RUN_PARAMETERS "/pkp"
 
+#open GC Studio at end.
+Function .oninstsuccess
+#    MessageBox MB_YESNO "Do you want to open GC Studio?" IDNO NoExec   
+Exec "$INSTDIR\${MAIN_APP_EXE}"   
+#NoReadme:
+FunctionEnd
 
 !define MUI_ABORTWARNING
 !define MUI_UNABORTWARNING
