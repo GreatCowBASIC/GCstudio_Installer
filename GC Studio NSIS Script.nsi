@@ -185,13 +185,11 @@ SetOutPath "$INSTDIR"
 WriteUninstaller "$INSTDIR\uninstall.exe"
 
 #Add Path
-; Check if the path entry already exists and write result to $0
-nsExec::Exec 'echo %PATH% | find "$INSTDIR\vscode\bin"'
-Pop $0   ; gets result code
-
-${If} $0 = 0
-    nsExec::Exec 'setx PATH %PATH%;$INSTDIR\vscode\bin'
-${EndIf}
+SetDetailsPrint both
+DetailPrint "Updating Registry Keys, this may take a while, please wait..."
+SetDetailsPrint listonly
+EnVar::AddValue "Path" "$INSTDIR\vscode\bin"
+SetDetailsPrint both
 
 #Start menu and desktop shortcuts
 !ifdef REG_START_MENU
