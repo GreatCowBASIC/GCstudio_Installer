@@ -74,7 +74,7 @@ InstallDir "C:\GCstudio"
 #open GC Studio at end.
 Function .oninstsuccess
 #    MessageBox MB_YESNO "Do you want to open GC Studio?" IDNO NoExec   
-Exec "$INSTDIR\${MAIN_APP_EXE}"   
+Exec "explorer.exe $INSTDIR\${MAIN_APP_EXE}"   
 #NoReadme:
 FunctionEnd
 
@@ -117,13 +117,15 @@ Section -MainProgram
 ${INSTALL_TYPE}
 SetOverwrite ifnewer
 
-#HKCU Environment key
-WriteRegStr ${REG_ROOT} "Environment"  "GCBASIC_INSTALL_PATH" "$INSTDIR\"
+
+
 
 #Prereq Net7
 SetDetailsPrint both
 DetailPrint "Installing prerequisites, this may take a while, please wait..."
 SetDetailsPrint listonly
+#HKCU Environment key
+WriteRegStr ${REG_ROOT} "Environment"  "GCBASIC_INSTALL_PATH" "$INSTDIR\"
 SetOutPath "$INSTDIR"
 File /r ".\Redist\Net7x86.exe"
 ExecWait "$INSTDIR\Net7x86.exe /install /quiet /norestart /log Log\Net7.log"
