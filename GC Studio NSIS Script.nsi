@@ -187,11 +187,11 @@ SetOutPath "$INSTDIR"
 WriteUninstaller "$INSTDIR\uninstall.exe"
 
 #Add Path
-SetDetailsPrint both
+
 DetailPrint "Updating Registry Keys, this may take a while, please wait..."
-SetDetailsPrint listonly
-EnVar::AddValue "Path" "$INSTDIR\vscode\bin"
-SetDetailsPrint both
+
+EnVar::SetHKCU
+EnVar::AddValue "Path" "$INSTDIR\vscode\bin;"
 
 #Start menu and desktop shortcuts
 !ifdef REG_START_MENU
