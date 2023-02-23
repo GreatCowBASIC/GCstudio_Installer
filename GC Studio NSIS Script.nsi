@@ -1,5 +1,5 @@
 ############################################################################################
-#                       NSIS Installation Script For GC Studio  V.1.03.01
+#                       NSIS Installation Script For GC Studio  V.1.03.03
 #                                   By Angel Mier                              
 ############################################################################################
 
@@ -71,11 +71,18 @@ InstallDir "C:\GCstudio"
 !define MUI_FINISHPAGE_RUN "$INSTDIR\${MAIN_APP_EXE}"
 !define MUI_FINISHPAGE_RUN_PARAMETERS "/pkp"
 
+#Install Options
+!define MUI_PAGE_COMPONENTS
+!define MUI_PAGE_COMPONENT_DESCRIPTION_TOP "Select Options:"
+
+
 #open GC Studio at end.
+Var endexec
+
 Function .oninstsuccess
-#    MessageBox MB_YESNO "Do you want to open GC Studio?" IDNO NoExec   
+${If} $endexec == "true"   
 Exec "explorer.exe $INSTDIR\${MAIN_APP_EXE}"   
-#NoReadme:
+${EndIf}
 FunctionEnd
 
 !define MUI_ABORTWARNING
@@ -97,6 +104,16 @@ FunctionEnd
 !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "${REG_START_MENU}"
 !insertmacro MUI_PAGE_STARTMENU Application $SM_Folder
 !endif
+
+
+!define MUI_COMPONENTSPAGE_TEXT_TOP "Special Options for GC Studio."
+!define MUI_COMPONENTSPAGE_TEXT_COMPLIST "Check the special options you want and uncheck the ones you dont. Click Install to continue."
+!define MUI_COMPONENTSPAGE_TEXT_INSTTYPE "Select special options:"
+#!define MUI_COMPONENTSPAGE_TEXT_DESCRIPTION_TITLE ""
+#!define MUI_COMPONENTSPAGE_TEXT_DESCRIPTION_INFO ""
+
+
+!insertmacro MUI_PAGE_COMPONENTS
 
 !insertmacro MUI_PAGE_INSTFILES
 
@@ -178,6 +195,24 @@ SetOutPath "$INSTDIR\GreatCowBasic"
 File /r ".\GCB_Gold\Build\use_in_master\*"
 
 SectionEnd
+
+#Run at finish Option
+Section "Run when finish" Runfinish
+StrCpy $endexec "true"
+SectionEnd
+
+#Legacy Option
+Section /o "Legacy Mode" Legacy
+  SetOverwrite on
+  SetOutPath "$INSTDIR"
+  File /r ".\CFGs\Legacy\*"
+SectionEnd
+
+#options descriptions
+!insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
+!insertmacro MUI_DESCRIPTION_TEXT ${Legacy} "Set GC Studio on legacy mode, it will use SynWrite directly like the old GCB."
+!insertmacro MUI_DESCRIPTION_TEXT ${Runfinish} "Run GC Studio at the end of the installation process."
+!insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 ######################################################################
 # Write Reg Keys and make Uninstaller

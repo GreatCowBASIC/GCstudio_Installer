@@ -1,0 +1,17 @@
+{
+  "GCstudio": {
+    "ReleaseChanel": "compiler only",
+    "IDE": "SynWrite",
+    "Architecture": "Auto",
+    "Firstrun": true,
+    "LastDirectory": null,
+    "Legacymode": true
+  },
+  "Window": {
+    "sizeW": 1028,
+    "sizeH": 681,
+    "locx": 0,
+    "locy": 0,
+    "maximized": false
+  }
+}
