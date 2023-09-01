@@ -18,7 +18,7 @@
 !define VERSION "1.03.00.00"
 !define COPYRIGHT "Copyright © 2007 - 2022"
 !define DESCRIPTION "Application"
-!define LICENSE_TXT ".\GCB_Gold\Build\GreatCowBASIC\documentation\license.txt"
+!define LICENSE_TXT ".\GCB_Gold\Build\gcbasic\documentation\license.txt"
 !define INSTALLER_NAME ".\GCstudioSetup.exe"
 !define MAIN_APP_EXE "GCstudio.exe"
 !define INSTALL_TYPE "SetShellVarContext current"
@@ -190,8 +190,8 @@ SetOutPath "$INSTDIR"
 File /r ".\GCB_Gold\Build\*"
 
 #USE.ine
-IfFileExists $INSTDIR\GreatCowBasic\use.ini +3 0
-SetOutPath "$INSTDIR\GreatCowBasic"
+IfFileExists $INSTDIR\gcbasic\use.ini +3 0
+SetOutPath "$INSTDIR\gcbasic"
 File /r ".\GCB_Gold\Build\use_in_master\*"
 
 SectionEnd
