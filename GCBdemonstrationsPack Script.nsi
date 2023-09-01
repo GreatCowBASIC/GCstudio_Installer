@@ -55,7 +55,7 @@ Section -MainProgram
 ${INSTALL_TYPE}
 SetOverwrite on
 
-SetOutPath "$INSTDIR\GreatCowBasic\demos\"
+SetOutPath "$INSTDIR\gcbasic\demos\"
 File /r /x .Git /x tutorials /x *.mkv /x *.mov /x *.mp4 /x *.pptx ".\Demonstration_Sources\*"
 
 
