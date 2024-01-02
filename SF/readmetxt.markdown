@@ -1,11 +1,11 @@
-# GC Studio Version 1.00.17
+# GC Studio Version 1.01.05
 
 ----
-    Compiler: 1.00.1249
-    GCStudio: 1.00.17.206
+    Compiler: 1.00.1308
+    GCStudio: 1.01.05.222
     GCcode:   1.76.2
     FBasic:   1.07.1
-    Toolchain:1253
+    Toolchain:1308
 
 This is the latest complete build of GC Studio.
 
