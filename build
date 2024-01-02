@@ -1,0 +1,14 @@
+#!/bin/bash
+cd GCB_Gold
+git pull origin master
+cd ..
+cd GCstudio
+git pull origin master
+cd ..
+cd GCcode
+git reset --hard
+git clean -fxd
+git pull origin master
+cd ..
+7z x GCcode\Build\Bin\Code.bin -y -oGCcode\Build\vscode
+makensis /V4 "gc Studio NSIS Script.nsi"
