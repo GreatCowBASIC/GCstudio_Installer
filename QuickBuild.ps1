@@ -1,1 +1,0 @@
-.\nsis\makensis /V4 "gc Studio NSIS Script.nsi"

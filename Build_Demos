@@ -1,0 +1,5 @@
+#!/bin/bash
+cd Demonstration_Sources
+git pull origin main
+cd ..
+makensis /V4 "GCBdemonstrationsPack Script.nsi"
