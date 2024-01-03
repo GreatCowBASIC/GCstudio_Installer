@@ -1,2 +1,2 @@
 #!/bin/bash
-makensis /V4 "gc Studio NSIS Script.nsi"
+makensis -V4 "GC Studio NSIS Script.nsi"

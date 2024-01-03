@@ -54,7 +54,7 @@ InstallDir "C:\GCstudio"
 ######################################################################
 # Modern UI configuration
 
-!define MUI_ICON ".\Res\Installericon.ico"
+!define MUI_ICON ".\Res\installericon.ico"
 !define MUI_UNICON ".\Res\Uninsntallico.ico"
 #!define MUI_WELCOMEFINISHPAGE_BITMAP_NOSTRETCH
 !define MUI_WELCOMEFINISHPAGE_BITMAP ".\Res\left.bmp"

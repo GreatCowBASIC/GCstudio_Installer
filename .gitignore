@@ -3,7 +3,7 @@ GCB_Gold/
 GCcode/
 GCstudio/
 Demonstration_Sources/
-LFTP/scriptdownload.txt
+*.ftp
 GCstudioSetup.exe
 GCBdemonstrationsPack.exe
 *.pkg

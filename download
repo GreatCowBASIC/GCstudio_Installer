@@ -1,2 +1,2 @@
 #!/bin/bash
-lftp -f scriptdownload.txt
+lftp -f scriptdownload.ftp

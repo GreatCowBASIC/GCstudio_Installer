@@ -50,7 +50,7 @@ Page instfiles
 
 ######################################################################
 # Main program, Demos Files
-Icon ".\Res\Installericon.ico"
+Icon ".\Res\installericon.ico"
 Section -MainProgram
 ${INSTALL_TYPE}
 SetOverwrite on
