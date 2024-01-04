@@ -1,0 +1,2 @@
+#!/bin/bash
+lftp -f scriptpublishdev.ftp
