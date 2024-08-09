@@ -3,6 +3,8 @@ GCB_Gold/
 GCcode/
 GCstudio/
 Demonstration_Sources/
+GCdebug/
+logs/
 *.ftp
 GCstudioSetup.exe
 GCBdemonstrationsPack.exe

@@ -153,6 +153,10 @@ SetDetailsPrint both
 SetOutPath "$INSTDIR"
 File /r ".\GCstudio\Build\net7.0-windows\*"
 
+#GCdebug
+SetOutPath "$INSTDIR"
+File /r ".\GCdebug\Build\net7.0-windows7.0\*"
+
 #GCcode
 SetOutPath "$INSTDIR\vscode"
 File /r ".\GCcode\Build\vscode\*"

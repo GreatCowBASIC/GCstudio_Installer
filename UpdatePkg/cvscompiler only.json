@@ -1,0 +1,11 @@
+{
+  "UpdateInfo": {
+    "ManifestVer": 1.0113,
+    "ManifestMinVer": 1.0102,
+    "ManifestPKG": "lite.pkg",
+    "ManifestChecksum": "B8C37EF7EC0C1538F0E061849053C77D",
+    "ManifestTitle": "GCstudio minor update",
+    "ManifestNotes": "Minor Bug Fixes.",
+    "AppExe": "GCstudio.exe"
+  }
+}

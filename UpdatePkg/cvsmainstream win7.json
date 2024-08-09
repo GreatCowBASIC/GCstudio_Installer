@@ -1,0 +1,11 @@
+{
+  "UpdateInfo": {
+    "ManifestVer": 1.0113,
+    "ManifestMinVer": 1.0102,
+    "ManifestPKG": "mainstream-win7.pkg",
+    "ManifestChecksum": "9E59A22A961D5B9A43247257331534E0",
+    "ManifestTitle": "GCstudio minor update",
+    "ManifestNotes": "Minor Bug Fixes.",
+    "AppExe": "GCstudio.exe"
+  }
+}
