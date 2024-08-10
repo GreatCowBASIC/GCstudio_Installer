@@ -5,6 +5,9 @@ cd ..
 cd GCstudio
 git pull origin master
 cd ..
+cd GCdebug
+git pull origin master
+cd ..
 cd GCcode
 git reset --hard
 git clean -fxd
