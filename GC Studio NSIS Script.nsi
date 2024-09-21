@@ -1,5 +1,5 @@
 ############################################################################################
-#                       NSIS Installation Script For GC Studio  V.1.03.03
+#                       NSIS Installation Script For GC Studio  V.1.03.04
 #                                   By Angel Mier                              
 ############################################################################################
 
@@ -144,18 +144,18 @@ SetDetailsPrint listonly
 #HKCU Environment key
 WriteRegStr ${REG_ROOT} "Environment"  "GCBASIC_INSTALL_PATH" "$INSTDIR\"
 SetOutPath "$INSTDIR"
-File /r ".\Redist\Net7x86.exe"
-ExecWait "$INSTDIR\Net7x86.exe /install /quiet /norestart /log Log\Net7.log"
-Delete "$INSTDIR\Net7x86.exe"
+File /r ".\Redist\Net8x86.exe"
+ExecWait "$INSTDIR\Net8x86.exe /install /quiet /norestart /log Log\Net8.log"
+Delete "$INSTDIR\Net8x86.exe"
 SetDetailsPrint both
 
 #GCstudio
 SetOutPath "$INSTDIR"
-File /r ".\GCstudio\Build\net7.0-windows\*"
+File /r ".\GCstudio\Build\net8.0-windows7.0\*"
 
 #GCdebug
 SetOutPath "$INSTDIR"
-File /r ".\GCdebug\Build\net7.0-windows7.0\*"
+File /r ".\GCdebug\Build\net8.0-windows7.0\*"
 
 #GCcode
 SetOutPath "$INSTDIR\vscode"
