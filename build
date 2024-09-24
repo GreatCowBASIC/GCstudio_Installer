@@ -14,4 +14,4 @@ git clean -fxd
 git pull origin master
 cd ..
 7z x "GCcode/Build/Bin/Code.bin" -y -o"GCcode/Build/vscode"
-makensis -V4 "GC Studio NSIS Script.nsi"
+makensis -V4 GCstudio.nsi

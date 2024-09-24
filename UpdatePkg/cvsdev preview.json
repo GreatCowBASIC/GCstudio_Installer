@@ -1,9 +1,9 @@
 {
   "UpdateInfo": {
-    "ManifestVer": 1.0115,
+    "ManifestVer": 1.0116,
     "ManifestMinVer": 1.0102,
     "ManifestPKG": "dev.pkg",
-    "ManifestChecksum": "49125582BB70867A3A221A413059FFAE",
+    "ManifestChecksum": "A568F20313F29B3AD7B6A4ABD61765F1",
     "ManifestTitle": "GCstudio minor update",
     "ManifestNotes": "Minor Bug Fixes.",
     "AppExe": "GCstudio.exe"
