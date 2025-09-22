@@ -177,9 +177,9 @@ File /r ".\GCcode\SRC\user-data\*"
 SetOutPath "$INSTDIR"
 File /r ".\GCcode\SRC\Reset To Factory\ResetToFactory.exe"
 
-#Fassoc exe
+#postupdate exe
 SetOutPath "$INSTDIR"
-File /r ".\GCstudio\SRC\fassoc\fassoc.exe"
+File /r ".\GCstudio\SRC\postupdate\postupdate.exe"
 
 #Templates
 SetOutPath "$INSTDIR"
@@ -264,7 +264,6 @@ WriteRegStr ${REG_ROOT} "${UNINSTALL_PATH}"  "DisplayVersion" "${VERSION}"
 WriteRegStr ${REG_ROOT} "${UNINSTALL_PATH}"  "Publisher" "${COMP_NAME}"
 
 #File Associations
-#File Associations
 WriteRegStr ${REG_CLASSES} ".gcb" "" "GCB File"
 WriteRegStr ${REG_CLASSES} "GCB File\shell\open\command" ""  "$INSTDIR\GCstudio.exe $\"%1$\""
 WriteRegStr ${REG_CLASSES} "GCB File\Defaulticon" "" "$INSTDIR\GCstudio.exe,0"
@@ -312,6 +311,10 @@ WriteRegStr ${REG_CLASSES} "PWSH Script\Defaulticon" "" "$INSTDIR\FileIcons\pwsh
 WriteRegStr ${REG_CLASSES} ".psm1" "" "PWSH Script Module"
 WriteRegStr ${REG_CLASSES} "PWSH Script Module\shell\open\command" ""  "$INSTDIR\GCstudio.exe $\"%1$\""
 WriteRegStr ${REG_CLASSES} "PWSH Script Module\Defaulticon" "" "$INSTDIR\FileIcons\pwsh.ico,0"
+
+WriteRegStr ${REG_CLASSES} ".mpk" "" "MPK File"
+WriteRegStr ${REG_CLASSES} "MPK File\shell\open\command" ""  "$INSTDIR\GCstudio.exe $\"%1$\""
+WriteRegStr ${REG_CLASSES} "MPK File\Defaulticon" "" "$INSTDIR\FileIcons\mpk.ico,0"
 
 #Windows Context Menu
 #shell
