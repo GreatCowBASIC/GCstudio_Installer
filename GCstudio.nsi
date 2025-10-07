@@ -1,6 +1,6 @@
 ############################################################################################
-#                       NSIS Installation Script For GC Studio  V.1.03.04
-#                                   By Angel Mier                              
+#                       NSIS Installation Script For GC Studio  V.1.03.05                  #
+#                                   By Angel Mier                                          #
 ############################################################################################
 
 ######################################################################
@@ -15,8 +15,8 @@
 !define APP_NAME "GC Studio"
 !define COMP_NAME "Mier Engineering"
 !define WEB_SITE "https://www.gcbasic.com"
-!define VERSION "1.03.00.00"
-!define COPYRIGHT "Copyright © 2007 - 2022"
+!define VERSION "1.01.00.00"
+!define COPYRIGHT "Copyright © 2007 - 2025"
 !define DESCRIPTION "Application"
 !define LICENSE_TXT ".\GCB_Gold\Build\gcbasic\documentation\license.txt"
 !define INSTALLER_NAME ".\GCstudioSetup.exe"
@@ -225,12 +225,12 @@ Section -Icons_Reg
 SetOutPath "$INSTDIR"
 WriteUninstaller "$INSTDIR\uninstall.exe"
 
-#Add Path
+# Add Path
 
 DetailPrint "Updating Registry Keys, this may take a while, please wait..."
 
-EnVar::SetHKCU
-EnVar::AddValue "Path" "$INSTDIR\vscode\bin;"
+#EnVar::SetHKCU
+#EnVar::AddValue "Path" "$INSTDIR\vscode\bin;"
 
 #Start menu and desktop shortcuts
 !ifdef REG_START_MENU
